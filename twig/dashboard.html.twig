@@ -1,0 +1,55 @@
+<div class="clearfix mb-3"></div>
+<img src="{{plugin_url}}slacklogo.png" height="30"/>
+
+
+{% for team in teams.getAll() %}
+	<h2>
+		{{ team.getTeamName() }}
+		<small>
+			<a href="?page={{GET('page')}}&sync={{team.getId()}}" class="btn btn-xs btn-ukm">oppdater</a>
+		</small>
+	</h2>
+    <h3>Brukere</h3>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Handlebar</th>
+				<th>Navn</th>
+				<th>Oppdatert</th>
+			</tr>
+		</thead>
+		{% for user in team.getUsers().getAll() %}
+			<tr>
+				<td>{{ user.getName() }}</td>
+				<td>{{ user.getRealName() }}</td>
+				<td class="timeago">{{ user.getUpdated()|date('d.m.Y H:i') }}</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="3">Ingen brukere</td>
+			</tr>
+		{% endfor %}
+	</table>
+    
+    <h3>Kanaler</h3>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Navn</th>
+				<th>Oppdatert</th>
+			</tr>
+		</thead>
+		{% for channel in team.getChannels().getAll() %}
+			<tr>
+				<td>{{ channel.getSlackId() }}</td>
+				<td>{{ channel.getName() }}</td>
+				<td class="timeago">{{ channel.getUpdated()|date('d.m.Y H:i') }}</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="3">Ingen kanaler</td>
+			</tr>
+		{% endfor %}
+	</table>
+{% endfor %}
