@@ -1,14 +1,13 @@
 <?php
 
-use UKMNorge\Slack\API\App;
 use UKMNorge\Slack\API\Channels;
 use UKMNorge\Slack\API\Users;
 use UKMNorge\Slack\App\UKMApp;
-use UKMNorge\Slack\Team\Teams;
-use UKMNorge\Slack\User\Users as LocalUsers;
-use UKMNorge\Slack\User\Write as WriteLocalUsers;
-use UKMNorge\Slack\Channel\Channels as LocalChannels;
-use UKMNorge\Slack\Channel\Write as WriteLocalChannels;
+use UKMNorge\Slack\Cache\Team\Teams;
+use UKMNorge\Slack\Cache\User\Users as LocalUsers;
+use UKMNorge\Slack\Cache\User\Write as WriteLocalUsers;
+use UKMNorge\Slack\Cache\Channel\Channels as LocalChannels;
+use UKMNorge\Slack\Cache\Channel\Write as WriteLocalChannels;
 
 $teams = new Teams();
 
