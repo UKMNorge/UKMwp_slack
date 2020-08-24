@@ -14,7 +14,7 @@ $teams = new Teams();
 if( isset( $_GET['sync'] ) ) {
     $team = $teams->get( intval($_GET['sync'] ) );
 
-    UKMApp::initFromBotToken( SLACK_BOT_TOKEN );
+    UKMApp::initFromBotToken( $team->getBot()->getAccessToken() );
     $userdata = Users::getAll();
 
     foreach( $userdata->members as $memberdata ) {
