@@ -1,3 +1,8 @@
+<style>
+    tr.inactive td {
+        text-decoration: line-through;
+    }
+</style>
 <div class="clearfix mb-3"></div>
 <img src="{{plugin_url}}slacklogo.png" height="30"/>
 
@@ -19,7 +24,7 @@
 			</tr>
 		</thead>
 		{% for user in team.getUsers().getAll() %}
-			<tr>
+			<tr class="{{ not user.isActive() ? 'in' }}active">
 				<td>{{ user.getName() }}</td>
 				<td>{{ user.getRealName() }}</td>
 				<td class="timeago">{{ user.getUpdated()|date('d.m.Y H:i') }}</td>

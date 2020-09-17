@@ -25,6 +25,11 @@ if( isset( $_GET['sync'] ) ) {
         }
         $user->setRealName( is_null($memberdata->real_name) ? '' : $memberdata->real_name);
         $user->setAdditionalData($memberdata);
+        if( $memberdata->deleted ) {
+            $user->deactivate();
+        } else {
+            $user->activate();
+        }
         WriteLocalUsers::save( $user );
     }
 
