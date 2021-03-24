@@ -38,7 +38,7 @@ if( isset( $_GET['sync'] ) ) {
     foreach( $response_data->channels as $channeldata ) {
         #echo '<pre>';var_dump($channeldata);echo '</pre>';
         try {
-            $channel = LocalChannels::getBySlackId( $channeldata->id);
+            $channel = LocalChannels::getBySlackId( $team->getTeamId(), $channeldata->id);
         } catch( Exception $e ) {
             $channel = WriteLocalChannels::create($team->getTeamId(), $channeldata->id, $channeldata->name);
         }
